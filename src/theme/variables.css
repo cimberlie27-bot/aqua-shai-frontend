@@ -1,0 +1,391 @@
+/* Aqua Shai Theme */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --display: 'Baloo 2', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --bg: #EEF6F4;
+  --surface: #FFFFFF;
+  --ink: #0B1F44;
+  --ink2: #566A8A;
+  --line: #D8E5E3;
+  --hover: #F4F9F8;
+  --pri: #2B5DB8;
+  --on-pri: #FFFFFF;
+  --pri-soft: #E6EEFA;
+  --deep: #1B3D84;
+  --bar: #B4C9F0;
+  --ok: #12A06B;
+  --ok-soft: #DDF5EA;
+  --warn: #C77700;
+  --warn-soft: #FFF1D6;
+  --bad: #D6384A;
+  --bad-soft: #FDE4E7;
+  --shadow: 0 1px 2px rgba(11,31,68,.05), 0 8px 24px rgba(11,31,68,.06);
+  
+  /* Ionic Overrides */
+  --ion-background-color: var(--bg);
+  --ion-text-color: var(--ink);
+  --ion-font-family: var(--font);
+  --ion-color-primary: var(--pri);
+  --ion-color-primary-contrast: var(--on-pri);
+  --ion-color-primary-shade: #2653a3;
+  --ion-color-primary-tint: #406fc7;
+}
+
+/* Base Styling */
+body, ion-content {
+  background-color: var(--bg) !important;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+h1, h2, h3, .logo-text {
+  font-family: var(--display);
+  line-height: 1.12;
+}
+
+/* Custom Classes for React */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13.5px;
+  white-space: nowrap;
+  transition: transform 0.1s, opacity 0.15s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn--pri { background: var(--pri); color: var(--on-pri); }
+.btn--soft { background: var(--pri-soft); color: var(--pri); }
+.btn--ghost { border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); }
+.btn--ghost:hover { border-color: var(--pri); color: var(--pri); }
+.btn--sm { height: 32px; padding: 0 12px; font-size: 12.5px; border-radius: 10px; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* ... (idagdag mo na lang yung .chip, .pill, .tile, .seg classes kung kailangan) */
+/* Aqua Shai Admin Specific Classes */
+.admin-content {
+  padding: 24px 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tile {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow);
+}
+
+.tile small {
+  color: var(--ink2);
+  font-weight: 600;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tile b {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+
+.tile .foot {
+  font-size: 12px;
+  color: var(--ink2);
+}
+
+.todoi {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  text-align: left;
+  transition: transform .12s, border-color .15s, box-shadow .15s;
+  cursor: pointer;
+  width: 100%;
+}
+
+.todoi:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(11,31,68,.09);
+}
+
+.todoi.warn { border-color: color-mix(in srgb, var(--warn) 40%, var(--line)); }
+.todoi.warn .ti { background: var(--warn-soft); color: var(--warn); }
+.todoi.pri { border-color: color-mix(in srgb, var(--pri) 45%, var(--line)); }
+.todoi.pri .ti { background: var(--pri-soft); color: var(--pri); }
+
+.todoi .ti {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.todoi b { display: block; font-size: 15px; color: var(--ink); }
+.todoi .small { display: block; color: var(--ink2); font-size: 12px; }
+
+/* Pilitin ang Plus Jakarta Sans sa lahat ng data */
+.num, .tile b, .num-val, td, .val, .amt {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-variant-numeric: normal !important;
+}
+
+/* Layout Classes */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 1100px) {
+  .grid2 { grid-template-columns: 1fr; }
+}
+
+/* Order Queue at Stock Health Styles */
+.q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.q:last-child { border-bottom: 0; padding-bottom: 0; }
+.q .info { flex: 1; min-width: 0; }
+.q .title { font-weight: 700; font-size: 14.5px; color: var(--ink); }
+.q .desc { font-size: 12.5px; color: var(--ink2); margin-top: 2px; }
+
+.rk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.rk:last-child { border-bottom: 0; padding-bottom: 0; }
+.rk .art {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--pri-soft); display: grid; place-items: center; flex: none;
+  color: var(--pri);
+}
+.rk .info { flex: 1; }
+.rk .title { font-weight: 700; font-size: 14.5px; color: var(--ink); }
+.rk .sub { font-size: 12px; color: var(--ink2); margin-top: 2px; }
+.meter {
+  height: 8px; border-radius: 4px; background: var(--pri-soft);
+  margin-top: 8px; position: relative; overflow: hidden;
+}
+.meter i {
+  display: block; height: 100%; border-radius: 4px;
+  background: var(--pri);
+}
+.meter i.low { background: var(--warn); }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700;
+}
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.pri { background: var(--pri-soft); color: var(--pri); }
+.pill.ok { background: var(--ok-soft); color: var(--ok); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 6px; height: 34px; padding: 0 14px; border-radius: 10px;
+  font-weight: 700; font-size: 12.5px; border: none; cursor: pointer;
+}
+.btn--pri { background: var(--pri); color: white; }
+.btn--ghost { background: white; border: 1.5px solid var(--line); color: var(--ink2); }
+.btn--ok { background: var(--ok); color: white; }
+
+/* Aqua Shai Admin Orders Page */
+.admin-page {
+  padding: 24px 28px;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 13.5px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.15s ease;
+}
+
+.btn--pri {
+  background: #2B5DB8;
+  color: white;
+}
+
+.btn--soft {
+  background: #E6EEFA;
+  color: #2B5DB8;
+}
+
+.btn--ghost {
+  background: white;
+  border: 1.5px solid #D8E5E3;
+  color: #566A8A;
+}
+
+.btn--ghost:hover {
+  border-color: #2B5DB8;
+  color: #2B5DB8;
+}
+
+.btn--sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 12.5px;
+  border-radius: 10px;
+}
+
+/* Table */
+.tablewrap {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #D8E5E3;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(11,31,68,.05), 0 8px 24px rgba(11,31,68,.06);
+}
+
+.tablewrap table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  text-align: left;
+}
+
+.tablewrap th {
+  padding: 16px 24px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #566A8A;
+  border-bottom: 1px solid #D8E5E3;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.tablewrap td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #D8E5E3;
+  vertical-align: middle;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.tablewrap tr:last-child td {
+  border-bottom: none;
+}
+
+/* Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pill.warn { background: #FFF1D6; color: #C77700; }
+.pill.pri { background: #E6EEFA; color: #2B5DB8; }
+.pill.ok { background: #DDF5EA; color: #12A06B; }
+.pill.bad { background: #FDE4E7; color: #D6384A; }
+.pill.gray { background: #f1f5f9; color: #64748b; }
+
+/* Filters */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.filters .lbl {
+  font-size: 13px;
+  font-weight: 700;
+  color: #566A8A;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1.5px solid #D8E5E3;
+  background: white;
+  font-weight: 700;
+  font-size: 13px;
+  color: #566A8A;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.chip.on {
+  background: #2B5DB8;
+  border-color: #2B5DB8;
+  color: white;
+}
+.chip .n {
+  background: #EEF6F4;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 800;
+}
+.chip.on .n {
+  background: rgba(255,255,255,0.2);
+}

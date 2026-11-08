@@ -1,0 +1,165 @@
+.admin-app-wrap {
+  --display: 'Baloo 2','Plus Jakarta Sans',system-ui,sans-serif;
+  --font: 'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --bg: #EEF6F4; --surface: #FFFFFF; --ink: #0B1F44; --ink2: #566A8A; --line: #D8E5E3; --hover: #F4F9F8;
+  --pri: #2B5DB8; --on-pri: #FFFFFF; --pri-soft: #E6EEFA; --deep: #1B3D84; --bar: #B4C9F0;
+  --ok: #12A06B; --ok-soft: #DDF5EA; --warn: #C77700; --warn-soft: #FFF1D6; --bad: #D6384A; --bad-soft: #FDE4E7;
+  --shadow: 0 1px 2px rgba(11,31,68,.05), 0 8px 24px rgba(11,31,68,.06);
+  
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  background: var(--bg);
+  font-family: var(--font);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.admin-app-wrap * { box-sizing: border-box; }
+.admin-app-wrap button, .admin-app-wrap input { font: inherit; color: inherit; cursor: pointer; border: none; background: none; padding: 0; text-align: left; }
+.admin-app-wrap h1, .admin-app-wrap h2, .admin-app-wrap h3 { font-family: var(--display); margin: 0; line-height: 1.12; }
+
+.admin-app-wrap .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 16px;border-radius:12px;font-weight:700;font-size:13.5px;white-space:nowrap;transition:transform .1s,opacity .15s}
+.admin-app-wrap .btn--pri{background:var(--pri);color:var(--on-pri)}
+.admin-app-wrap .btn--soft{background:var(--pri-soft);color:var(--pri)}
+.admin-app-wrap .btn--ghost{border:1.5px solid var(--line);background:var(--surface)}
+.admin-app-wrap .btn--ghost:hover{border-color:var(--pri);color:var(--pri)}
+.admin-app-wrap .btn--ok{background:var(--ok);color:#fff}
+.admin-app-wrap .btn--sm{height:32px;padding:0 12px;font-size:12.5px;border-radius:10px}
+
+.admin-app-wrap .chip{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:12.5px;white-space:nowrap; cursor: pointer;}
+.admin-app-wrap .chip.on{background:var(--pri);border-color:var(--pri);color:var(--on-pri)}
+.admin-app-wrap .chip .n { background: #EEF6F4; padding: 0 6px; border-radius: 999px; font-size: 11px; font-weight: 800; line-height: 18px; text-align: center; }
+.admin-app-wrap .chip.on .n { background: rgba(255,255,255,0.2); color: white; }
+.admin-app-wrap .chips{display:flex;gap:8px;flex-wrap:wrap}
+
+.admin-app-wrap .pill{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.admin-app-wrap .pill.warn{background:var(--warn-soft);color:var(--warn)}
+.admin-app-wrap .pill.pri{background:var(--pri-soft);color:var(--pri)}
+.admin-app-wrap .pill.ok{background:var(--ok-soft);color:var(--ok)}
+.admin-app-wrap .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.admin-app-wrap .pill.gray{background:var(--line);color:var(--ink2)}
+
+.admin-app-wrap .filters{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.admin-app-wrap .filters .lbl{font-size:13px;font-weight:700;color:var(--ink2)}
+
+.admin-app-wrap .tablewrap{overflow-x:auto;}
+.admin-app-wrap table{width:100%;border-collapse:collapse;min-width:760px}
+.admin-app-wrap th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);padding:0 10px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.admin-app-wrap td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.admin-app-wrap tbody tr{cursor:pointer}
+.admin-app-wrap tbody tr:hover td{background:var(--hover)}
+.admin-app-wrap tbody tr:last-child td{border-bottom:0}
+
+.admin-app-wrap .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);min-width:0}
+
+.admin-app-wrap .side { width: 260px; background: var(--surface); border-right: 1px solid var(--line); display: flex; flex-direction: column; flex-shrink: 0; padding: 20px 16px 16px; }
+.admin-app-wrap .main { flex: 1; height: 100vh; overflow-y: auto; background: var(--bg); padding: 24px 28px; }
+
+/* =========================================
+   GLOBAL HOVER EFFECTS PARA SA ADMIN
+   ========================================= */
+
+/* 1. BUTTON HOVER — lift + shadow + slight darken */
+.admin-hover-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.admin-hover-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+  box-shadow: 0 6px 16px rgba(11,31,68,0.15);
+}
+.admin-hover-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.9);
+  box-shadow: 0 2px 6px rgba(11,31,68,0.1);
+}
+
+/* 2. TABLE ROW HOVER — malinaw na background highlight + left accent */
+.admin-table-row {
+  transition: background 0.15s ease;
+}
+.admin-table-row:hover {
+  background: #EAF3F1 !important;
+  box-shadow: inset 3px 0 0 #2B5DB8;
+}
+
+/* 3. CARD HOVER — lift + mas malinaw na shadow */
+.admin-card {
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.admin-card:hover {
+  box-shadow: 0 10px 28px rgba(11,31,68,0.12) !important;
+  transform: translateY(-3px);
+  border-color: #B4C9F0;
+}
+
+/* 4. INPUT HOVER/FOCUS — border color + glow */
+.admin-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.admin-input:hover {
+  border-color: #A5C9E8 !important;
+  background: #FAFDFC !important;
+}
+.admin-input:focus {
+  border-color: #2B5DB8 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(43,93,184,0.15) !important;
+  outline: none;
+}
+
+/* 5. ICON BUTTON HOVER — border + bg + icon color */
+.admin-icon-btn {
+  transition: all 0.2s ease;
+}
+.admin-icon-btn:hover {
+  border-color: #2B5DB8 !important;
+  background: #E6EEFA !important;
+  color: #2B5DB8 !important;
+  transform: scale(1.05);
+}
+
+/* ✅ SIDEBAR NAV - LIGHT BLUE HOVER/ACTIVE */
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  background: transparent;
+  color: #566A8A;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* HOVER — light blue bg, blue text */
+.admin-nav-item:hover {
+  background: #E6EEFA !important;
+  color: #2B5DB8 !important;
+}
+
+.admin-nav-item:hover ion-icon,
+.admin-nav-item:hover svg {
+  color: #2B5DB8 !important;
+  fill: #2B5DB8 !important;
+}
+
+/* ACTIVE — light blue bg + blue text + bold */
+.admin-nav-item.active {
+  background: #E6EEFA !important;
+  color: #2B5DB8 !important;
+  font-weight: 800 !important;
+}
+
+.admin-nav-item.active ion-icon,
+.admin-nav-item.active svg {
+  color: #2B5DB8 !important;
+  fill: #2B5DB8 !important;
+}
