@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Gagamitin nito yung Environment Variable kung meron, kung wala, mag-fa-fallback sa localhost
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const currentHost = window.location.hostname;
+export const API_URL = `http://${currentHost}:8000`;
 
 export const api = axios.create({
   baseURL: API_URL,
